@@ -24,7 +24,6 @@ method.PerformReq = function(url, callback){
 	    method: 'GET',
 	    headers: this.headers
 	}
-
 	request(options, function (error, response, body) {
 	    if (!error && response.statusCode == 200) {
 	        callback(body);
@@ -60,49 +59,49 @@ method.GetPeriods = function(callback) {
     this.HttpClient.PerformReq('https://rest.coinapi.io/v1/ohlcv/periods', callback);
 };
 
-method.GetOHLCVLatest = function(callback) {
-    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/exchanges', callback);
+method.GetOHLCVLatest = function(symbol_id, period_id, callback) {
+    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/ohlcv/'+symbol_id + '/latest?period_id=' + period_id, callback);
 };
-method.GetOHLCVHistory = function(callback) {
-    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/assets',callback);
+method.GetOHLCVHistory = function(symbol_id, period_id, time_start ,callback) {
+    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/ohlcv/' + symbol_id + '/history?period_id=' + period_id + '&time_start=' + time_start, callback);
 };
 
 //trades
 method.GetTradesLatest = function(callback) {
-    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/symbols', callback);
+    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/trades/latest', callback);
 };
 
-method.GetTradesHistory = function(callback) {
-    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/exchanges', callback);
+method.GetTradesHistory = function(symbol_id, time_start,  callback) {
+    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/trades/' + symbol_id + '/history?time_start=' + time_start, callback);
 };
 //Quotes
 method.GetQuotesCurrent = function(callback) {
-    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/assets', callback);
+    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/quotes/current', callback);
 };
 method.GetQuotesLatest = function(callback) {
-    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/symbols', callback);
+    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/quotes/latest', callback);
 };
 
-method.GetQuotesHistory = function(callback) {
-    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/symbols', callback);
+method.GetQuotesHistory = function(symbol_id, time_start, callback) {
+    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/quotes/'+ symbol_id + '/history?time_start=' +time_start, callback);
 };
 //OrderBooks
 method.GetOrderbookCurrent = function(callback) {
-    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/exchanges', callback);
+    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/Orderbooks/current', callback);
 };
-method.GetOrderbookLatest = function(callback) {
-    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/assets',callback);
+method.GetOrderbookLatest = function(symbol_id, callback) {
+    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/Orderbooks/' + symbol_id + '/latest',callback);
 };
 
-method.GetOrderbookHistory = function(callback) {
-    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/symbols', callback);
+method.GetOrderbookHistory = function(symbol_id, time_start, callback) {
+    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/Orderbooks/'+symbol_id+'/history?time_start='+time_start, callback);
 };
 //Twitter
 method.GetTwitterLatest = function(callback) {
-    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/exchanges', callback);
+    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/twitter/latest', callback);
 };
-method.GetTwitterHistory = function(callback) {
-    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/assets',callback);
+method.GetTwitterHistory = function(time_start, callback) {
+    this.HttpClient.PerformReq('https://rest.coinapi.io/v1/twitter/history?time_start='+time_start, callback);
 };
 module.exports = CoinApi;
 

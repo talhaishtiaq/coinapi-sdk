@@ -1,7 +1,5 @@
 var CoinApi = require('./coinapi_v1.js');
 
-
-
 var time_start = new Date();
 time_start.setDate(time_start.getDate()-1);
 time_start = time_start.toISOString();
@@ -13,6 +11,9 @@ api.getExchanges(function(err, Exchanges) {
 		Exchanges.forEach(function(value, index){
 			console.log(value);
 		});
+	}else{
+		Exchanges  = JSON.parse(Exchanges);
+		console.log(Exchanges);
 	}
 });
 api.getAssets(function(err, Assets) {
@@ -21,6 +22,9 @@ api.getAssets(function(err, Assets) {
 		Assets.forEach(function(value, index){
 			console.log(value);
 		});
+	}else{
+		Assets  = JSON.parse(Assets);
+		console.log(Assets);
 	}
 });
 api.getSymbols(function(err, Symbols) {
@@ -29,11 +33,17 @@ api.getSymbols(function(err, Symbols) {
 		Symbols.forEach(function(value, index){
 			console.log(value);
 		});
+	}else{
+		Symbols  = JSON.parse(Symbols);
+		console.log(Symbols);
 	}
 });
 
 api.GetExchangeRate(function(err, ExchangeRate) {
 	if(!err){
+		ExchangeRate  = JSON.parse(ExchangeRate);
+		console.log(ExchangeRate);
+	}else{
 		ExchangeRate  = JSON.parse(ExchangeRate);
 		console.log(ExchangeRate);
 	}
@@ -44,6 +54,9 @@ api.GetExchangeRates(function(err, ExchangeRates) {
 		ExchangeRates.rates.forEach(function(value, index){
 			console.log(value);
 		});
+	}else{
+		ExchangeRates  = JSON.parse(ExchangeRates);
+		console.log(ExchangeRates);
 	}
 }, 'BTC');
 api.GetPeriods(function(err, Periods) {
@@ -52,6 +65,9 @@ api.GetPeriods(function(err, Periods) {
 		Periods.forEach(function(value, index){
 			console.log(value);
 		});
+	}else{
+		Periods  = JSON.parse(Periods);
+		console.log(Periods);
 	}
 });
 api.GetOHLCVLatest(function(err, OHLCV) {
@@ -60,6 +76,9 @@ api.GetOHLCVLatest(function(err, OHLCV) {
 		OHLCV.forEach(function(value, index){
 			console.log(value);
 		});
+	}else{
+		OHLCV  = JSON.parse(OHLCV);
+		console.log(OHLCV);
 	}
 }, 'BITSTAMP_SPOT_BTC_USD','1HRS');
 
@@ -69,6 +88,9 @@ api.GetOHLCVHistory(function(err, OHLCV) {
 		OHLCV.forEach(function(value, index){
 			console.log(value);
 		});
+	}else{
+		OHLCV  = JSON.parse(OHLCV);
+		console.log(OHLCV);
 	}
 }, 'BITSTAMP_SPOT_BTC_USD','1HRS', time_start);
 api.GetTradesLatest(function(err, Trades) {
@@ -77,6 +99,9 @@ api.GetTradesLatest(function(err, Trades) {
 		Trades.forEach(function(value, index){
 			console.log(value);
 		});
+	}else{
+		Trades  = JSON.parse(Trades);
+		console.log(Trades);
 	}
 });
 
@@ -86,8 +111,11 @@ api.GetTradesHistory(function(err, Trades) {
 		Trades.forEach(function(value, index){
 			console.log(value);
 		});
+	}else{
+		Trades  = JSON.parse(Trades);
+		console.log(Trades);
 	}
-}, 'BITSTAMP_SPOT_BTC_USD', time_start);
+}, 'BITSTAMP_SPOT_BTC_USD', "kjv ksjdcjv");
 api.GetQuotesCurrent(function(err, Quotes) {
 	if(!err){
 		Quotes  = JSON.parse(Quotes);
@@ -95,6 +123,9 @@ api.GetQuotesCurrent(function(err, Quotes) {
 		// Quotes.forEach(function(value, index){
 		// 	console.log(value);
 		// });
+	}else{
+		Quotes  = JSON.parse(Quotes);
+		console.log(Quotes);
 	}
 }, 'BITSTAMP_SPOT_BTC_USD');
 api.GetQuotesLatest(function(err, Quotes) {
@@ -103,6 +134,9 @@ api.GetQuotesLatest(function(err, Quotes) {
 		Quotes.forEach(function(value, index){
 			console.log(value);
 		});
+	}else{
+		Quotes  = JSON.parse(Quotes);
+		console.log(Quotes);
 	}
 });
 api.GetQuotesHistory(function(err, Quotes) {
@@ -111,6 +145,9 @@ api.GetQuotesHistory(function(err, Quotes) {
 		Quotes.forEach(function(value, index){
 			console.log(value);
 		});
+	}else{
+		Quotes  = JSON.parse(Quotes);
+		console.log(Quotes);
 	}
 }, 'BITSTAMP_SPOT_BTC_USD', time_start);
 api.GetOrderbookCurrent(function(err, OrderBooks) {
@@ -119,6 +156,9 @@ api.GetOrderbookCurrent(function(err, OrderBooks) {
 		OrderBooks.forEach(function(value, index){
 			console.log(value);
 		});
+	}else{
+		OrderBooks  = JSON.parse(OrderBooks);
+		console.log(OrderBooks);
 	}
 });
 api.GetOrderbookLatest(function(err, OrderBooks) {
@@ -127,6 +167,9 @@ api.GetOrderbookLatest(function(err, OrderBooks) {
 		OrderBooks.forEach(function(value, index){
 			console.log(value);
 		});
+	}else{
+		OrderBooks  = JSON.parse(OrderBooks);
+		console.log(OrderBooks);
 	}
 }, 'BITSTAMP_SPOT_BTC_USD');
 api.GetOrderbookHistory(function(err, OrderBooks) {
@@ -135,6 +178,9 @@ api.GetOrderbookHistory(function(err, OrderBooks) {
 		OrderBooks.forEach(function(value, index){
 			console.log(value);
 		});
+	}else{
+		OrderBooks  = JSON.parse(OrderBooks);
+		console.log(OrderBooks);
 	}
 }, 'BITSTAMP_SPOT_BTC_USD', time_start);
 api.GetTwitterLatest(function(err, Twitter) {
@@ -143,11 +189,19 @@ api.GetTwitterLatest(function(err, Twitter) {
 		Twitter.forEach(function(value, index){
 			console.log(value);
 		});
+	}else{
+		Twitter  = JSON.parse(Twitter);
+		console.log(Twitter);
 	}
 });
 api.GetTwitterHistory(function(err, Twitter) {
-	Twitter  = JSON.parse(Twitter);
-	Twitter.forEach(function(value, index){
-		console.log(value);
-	});
+	if(!err){
+		Twitter  = JSON.parse(Twitter);
+		Twitter.forEach(function(value, index){
+			console.log(value);
+		});
+	}else{
+		Twitter  = JSON.parse(Twitter);
+		console.log(Twitter);
+	}
 }, time_start);

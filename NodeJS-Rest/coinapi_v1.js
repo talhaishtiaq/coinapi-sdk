@@ -26,8 +26,9 @@ method.PerformReq = function(url, callback){
 	    if (!error && response.statusCode == 200) {
 	        callback(false , data);
 	    }else{
-	    	callback(true , {'statusCode' : response.statusCode, 'statusMessage': response.statusMessage});
+	    	callback(true , data);
 		}
+        return;
 	});
 }
 
@@ -50,9 +51,11 @@ method.getSymbols = function(callback) {
 //Exchange Rates
 method.GetExchangeRate = function(callback, asset_id_base, asset_id_quote, time = null) {
 	if(asset_id_quote == null){
-		callback("asset_id_quote is required");
+		callback(true ,"asset_id_quote is required");
+        return;
 	}if(asset_id_base == null){
-		callback("asset_id_base is required");
+		callback(true ,"asset_id_base is required");
+        return;
 	}if(time != null ){
 		this.HttpClient.PerformReq('https://rest.coinapi.io/v1/exchangerate/'+asset_id_base+'/'+asset_id_quote+'?time='+time , callback);
 	}else{
@@ -61,7 +64,8 @@ method.GetExchangeRate = function(callback, asset_id_base, asset_id_quote, time 
 };
 method.GetExchangeRates = function(callback, asset_id_base) {
 	if(asset_id_base == null){
-		callback("asset_id_base is required");
+		callback(true ,"asset_id_base is required");
+        return;
 	}
     this.HttpClient.PerformReq('https://rest.coinapi.io/v1/exchangerate/' + asset_id_base, callback);
 };
@@ -72,9 +76,11 @@ method.GetPeriods = function(callback) {
 
 method.GetOHLCVLatest = function(callback, symbol_id, period_id, limit = null) {
 	if(symbol_id == null){
-		callback("symbol_id is required");
+		callback(true ,"symbol_id is required");
+        return;
 	}if(period_id == null){
-		callback("period_id is required");
+		callback(true ,"period_id is required");
+        return;
 	}if(limit != null){
 		this.HttpClient.PerformReq('https://rest.coinapi.io/v1/ohlcv/'+symbol_id + '/latest?period_id=' + period_id+'&limit='+limit, callback);
 	}else{
@@ -83,11 +89,14 @@ method.GetOHLCVLatest = function(callback, symbol_id, period_id, limit = null) {
 };
 method.GetOHLCVHistory = function(callback, symbol_id, period_id, time_start, time_end = null, limit = null) {
 	if(symbol_id == null){
-		callback("symbol_id is required");
+		callback(true ,"symbol_id is required");
+        return;
 	}if(period_id == null){
-		callback("period_id is required");
+		callback(true ,"period_id is required");
+        return;
 	}if (time_start == null){
-        callback("time_start is required");
+        callback(true ,"time_start is required");
+        return;
     }if (time_end == null && limit != null){
     	this.HttpClient.PerformReq('https://rest.coinapi.io/v1/ohlcv/' + symbol_id + '/history?period_id=' + period_id + '&time_start=' + time_start + '&limit='+limit, callback);
     }else if (limit == null && time_end != null){
@@ -123,11 +132,13 @@ method.GetTradesLatest = function(callback, symbol_id, limit = null) {
 method.GetTradesHistory = function(callback, symbol_id, time_start, time_end = null, limit = null) {
     if (symbol_id == null)
     {
-        callback("symbol_id is required");
+        callback(true ,"symbol_id is required");
+        return;
     }
     if (time_start == null)
     {
-        callback("time_start is required");
+        callback(true ,"time_start is required");
+        return;
     }
     if (time_end == null && limit != null)
     {
@@ -182,11 +193,13 @@ method.GetQuotesLatest = function(callback, symbol_id =null, limit = null) {
 method.GetQuotesHistory = function(callback, symbol_id, time_start, time_end = null, limit = null) {
     if (symbol_id == null)
     {
-        callback("symbol_id is required");
+        callback(true ,"symbol_id is required");
+        return;
     }
     if (time_start == null)
     {
-        callback("time_start is required");
+        callback(true ,"time_start is required");
+        return;
     }
     if (time_end == null && limit != null)
     {
@@ -221,7 +234,8 @@ method.GetOrderbookCurrent = function(callback, symbol_id = null) {
 method.GetOrderbookLatest = function(callback, symbol_id, limit = null) {
     if (symbol_id == null)
     {
-        callback("symbol_id is required");
+        callback(true ,"symbol_id is required");
+        return;
     }
     if (limit == null)
     {
@@ -237,11 +251,13 @@ method.GetOrderbookLatest = function(callback, symbol_id, limit = null) {
 method.GetOrderbookHistory = function(callback, symbol_id, time_start, time_end = null, limit = null) {
     if (symbol_id == null)
     {
-        callback("symbol_id is required");
+        callback(true ,"symbol_id is required");
+        return;
     }
     if (time_start == null)
     {
-        callback("time_start is required");
+        callback(true ,"time_start is required");
+        return;
     }
     if (time_end == null && limit != null)
     {
@@ -276,7 +292,8 @@ method.GetTwitterLatest = function(callback, limit = null) {
 method.GetTwitterHistory = function(callback, time_start, time_end = null, limit = null) {
     if (time_start == null)
     {
-        callback("time_start is required");
+        callback(true ,"time_start is required");
+        return;
     }
     if (time_end == null && limit != null)
     {

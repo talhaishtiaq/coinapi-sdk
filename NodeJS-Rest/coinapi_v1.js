@@ -57,6 +57,7 @@ method.GetExchangeRate = function(callback, asset_id_base, asset_id_quote, time 
 		callback(true ,"asset_id_base is required");
         return;
 	}if(time != null ){
+        time = time.toISOString();
 		this.HttpClient.PerformReq('https://rest.coinapi.io/v1/exchangerate/'+asset_id_base+'/'+asset_id_quote+'?time='+time , callback);
 	}else{
 		this.HttpClient.PerformReq('https://rest.coinapi.io/v1/exchangerate/'+asset_id_base+'/'+asset_id_quote , callback);
@@ -97,13 +98,17 @@ method.GetOHLCVHistory = function(callback, symbol_id, period_id, time_start, ti
 	}if (time_start == null){
         callback(true ,"time_start is required");
         return;
-    }if (time_end == null && limit != null){
+    }
+    time_start = time_start.toISOString();
+    if (time_end == null && limit != null){
     	this.HttpClient.PerformReq('https://rest.coinapi.io/v1/ohlcv/' + symbol_id + '/history?period_id=' + period_id + '&time_start=' + time_start + '&limit='+limit, callback);
     }else if (limit == null && time_end != null){
+        time_end = time_end.toISOString();
     	this.HttpClient.PerformReq('https://rest.coinapi.io/v1/ohlcv/' + symbol_id + '/history?period_id=' + period_id + '&time_start=' + time_start + '&time_end='+time_end, callback);
 	}else if (limit == null && time_end == null){
 		this.HttpClient.PerformReq('https://rest.coinapi.io/v1/ohlcv/' + symbol_id + '/history?period_id=' + period_id + '&time_start=' + time_start, callback);
     }else{
+        time_end = time_end.toISOString();
     	this.HttpClient.PerformReq('https://rest.coinapi.io/v1/ohlcv/' + symbol_id + '/history?period_id=' + period_id + '&time_start=' + time_start + '&time_end='+time_end+'&limit='+limit, callback);
     }
 };
@@ -140,12 +145,14 @@ method.GetTradesHistory = function(callback, symbol_id, time_start, time_end = n
         callback(true ,"time_start is required");
         return;
     }
+    time_start = time_start.toISOString();
     if (time_end == null && limit != null)
     {
         url= 'https://rest.coinapi.io/v1/trades/' + symbol_id + '/history?time_start='  + time_start + '&limit=' + limit;
     }
     else if (limit == null && time_end != null)
     {
+        time_end = time_end.toISOString();
         url= 'https://rest.coinapi.io/v1/trades/' + symbol_id + '/history?time_start=' + time_start + '&time_end=' + time_end;
     }
     else if (limit == null && time_end == null)
@@ -154,6 +161,7 @@ method.GetTradesHistory = function(callback, symbol_id, time_start, time_end = n
     }
     else
     {
+        time_end = time_end.toISOString();
         url= 'https://rest.coinapi.io/v1/trades/' + symbol_id + '/history?time_start=' + time_start + '&time_end=' + time_end + '&limit=' + limit;
     }
     this.HttpClient.PerformReq(url, callback);
@@ -201,13 +209,15 @@ method.GetQuotesHistory = function(callback, symbol_id, time_start, time_end = n
         callback(true ,"time_start is required");
         return;
     }
+    time_start = time_start.toISOString();
     if (time_end == null && limit != null)
     {
         url = 'https://rest.coinapi.io/v1/quotes/' + symbol_id + '/history?time_start=' + time_start + '&limit=' + limit;
     }
     else if (limit == null && time_end != null)
     {
-       url = 'https://rest.coinapi.io/v1/quotes/' + symbol_id + '/history?time_start=' + time_start + '&time_end=' + time_end;
+        time_end = time_end.toISOString();
+        url = 'https://rest.coinapi.io/v1/quotes/' + symbol_id + '/history?time_start=' + time_start + '&time_end=' + time_end;
     }
     else if (limit == null && time_end == null)
     {
@@ -215,6 +225,7 @@ method.GetQuotesHistory = function(callback, symbol_id, time_start, time_end = n
     }
     else
     {
+        time_end = time_end.toISOString();
         url = 'https://rest.coinapi.io/v1/quotes/' + symbol_id + '/history?time_start=' + time_start + '&time_end=' + time_end + '&limit=' + limit;
     }
     this.HttpClient.PerformReq(url, callback);
@@ -259,12 +270,14 @@ method.GetOrderbookHistory = function(callback, symbol_id, time_start, time_end 
         callback(true ,"time_start is required");
         return;
     }
+    time_start = time_start.toISOString();
     if (time_end == null && limit != null)
     {
         url = 'https://rest.coinapi.io/v1/Orderbooks/' + symbol_id + '/history?time_start=' + time_start + '&limit=' + limit;
     }
     else if (limit == null && time_end != null)
     {
+        time_end = time_end.toISOString();
         url= 'https://rest.coinapi.io/v1/Orderbooks/' + symbol_id + '/history?time_start=' + time_start + '&time_end=' + time_end;
     }
     else if (limit == null && time_end == null)
@@ -273,6 +286,7 @@ method.GetOrderbookHistory = function(callback, symbol_id, time_start, time_end 
     }
     else
     {
+        time_end = time_end.toISOString();
         url = 'https://rest.coinapi.io/v1/Orderbooks/' + symbol_id + '/history?time_start=' + time_start + '&time_end=' + time_end + '&limit=' + limit;
     }
     this.HttpClient.PerformReq(url, callback);
@@ -295,12 +309,14 @@ method.GetTwitterHistory = function(callback, time_start, time_end = null, limit
         callback(true ,"time_start is required");
         return;
     }
+    time_start = time_start.toISOString();
     if (time_end == null && limit != null)
     {
         url = 'https://rest.coinapi.io/v1/twitter/history?time_start=' + time_start + '&limit=' + limit;
     }
     else if (limit == null && time_end != null)
     {
+        time_end = time_end.toISOString();
         url = 'https://rest.coinapi.io/v1/twitter/history?time_start=' + time_start + '&time_end=' + time_end;
     }
     else if (limit == null && time_end == null)
@@ -309,6 +325,7 @@ method.GetTwitterHistory = function(callback, time_start, time_end = null, limit
     }
     else
     {
+        time_end = time_end.toISOString();
         url = 'https://rest.coinapi.io/v1/twitter/history?time_start=' + time_start + '&time_end=' + time_end + '&limit=' + limit;
     }
     this.HttpClient.PerformReq('https://rest.coinapi.io/v1/twitter/history?time_start='+time_start, callback);

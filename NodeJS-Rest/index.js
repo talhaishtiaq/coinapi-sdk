@@ -2,7 +2,7 @@ var CoinApi = require('./coinapi_v1.js');
 
 var time_start = new Date();
 time_start.setDate(time_start.getDate()-1);
-time_start = time_start.toISOString();
+
 
 var api = new CoinApi('APIKey');
 api.getExchanges(function(err, Exchanges) {
@@ -115,7 +115,7 @@ api.GetTradesHistory(function(err, Trades) {
 		Trades  = JSON.parse(Trades);
 		console.log(Trades);
 	}
-}, 'BITSTAMP_SPOT_BTC_USD', "kjv ksjdcjv");
+}, 'BITSTAMP_SPOT_BTC_USD', time_start);
 api.GetQuotesCurrent(function(err, Quotes) {
 	if(!err){
 		Quotes  = JSON.parse(Quotes);

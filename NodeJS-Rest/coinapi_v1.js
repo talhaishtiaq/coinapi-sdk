@@ -9,12 +9,10 @@ function HttpClient(ApiKey){
 
 method.SetHeaders = function (ApiKey){
 	var headers = {
-	    'User-Agent':       'Super Agent/0.0.1',
 	    'Content-Type':     'application/json',
 	    'X-CoinAPI-Key' : ApiKey
 	}
 	this.headers = headers;
-	//return headers;
 }
 
 method.PerformReq = function(url, callback){
@@ -28,7 +26,7 @@ method.PerformReq = function(url, callback){
 	    if (!error && response.statusCode == 200) {
 	        callback(false , data);
 	    }else{
-	    	callback(true , response.statusCode);
+	    	callback(true , {'statusCode' : response.statusCode, 'statusMessage': response.statusMessage});
 		}
 	});
 }

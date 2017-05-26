@@ -8,58 +8,142 @@ time_start = time_start.toISOString();
 
 var api = new CoinApi('APIKey');
 api.getExchanges(function(err, Exchanges) {
-	console.log(Exchanges);
+	if(!err){
+		Exchanges  = JSON.parse(Exchanges);
+		Exchanges.forEach(function(value, index){
+			console.log(value);
+		});
+	}
 });
 api.getAssets(function(err, Assets) {
-	console.log(Assets);
+	if(!err){
+		Assets  = JSON.parse(Assets);
+		Assets.forEach(function(value, index){
+			console.log(value);
+		});
+	}
 });
 api.getSymbols(function(err, Symbols) {
-	console.log(Symbols);
+	if(!err){
+		Symbols  = JSON.parse(Symbols);
+		Symbols.forEach(function(value, index){
+			console.log(value);
+		});
+	}
 });
 
 api.GetExchangeRate(function(err, ExchangeRate) {
-	console.log(ExchangeRate);
+	if(!err){
+		ExchangeRate  = JSON.parse(ExchangeRate);
+		console.log(ExchangeRate);
+	}
 }, 'BTC','USD');
 api.GetExchangeRates(function(err, ExchangeRates) {
-	console.log(ExchangeRates);
+	if(!err){
+		ExchangeRates  = JSON.parse(ExchangeRates);
+		ExchangeRates.rates.forEach(function(value, index){
+			console.log(value);
+		});
+	}
 }, 'BTC');
 api.GetPeriods(function(err, Periods) {
-	console.log(Periods);
+	if(!err){
+		Periods  = JSON.parse(Periods);
+		Periods.forEach(function(value, index){
+			console.log(value);
+		});
+	}
 });
 api.GetOHLCVLatest(function(err, OHLCV) {
-	console.log(OHLCV);
+	if(!err){
+		OHLCV  = JSON.parse(OHLCV);
+		OHLCV.forEach(function(value, index){
+			console.log(value);
+		});
+	}
 }, 'BITSTAMP_SPOT_BTC_USD','1HRS');
 
 api.GetOHLCVHistory(function(err, OHLCV) {
-	console.log(OHLCV);
+	if(!err){
+		OHLCV  = JSON.parse(OHLCV);
+		OHLCV.forEach(function(value, index){
+			console.log(value);
+		});
+	}
 }, 'BITSTAMP_SPOT_BTC_USD','1HRS', time_start);
 api.GetTradesLatest(function(err, Trades) {
-	console.log(Trades);
+	if(!err){
+		Trades  = JSON.parse(Trades);
+		Trades.forEach(function(value, index){
+			console.log(value);
+		});
+	}
 });
 
 api.GetTradesHistory(function(err, Trades) {
-	console.log(Trades);
+	if(!err){
+		Trades  = JSON.parse(Trades);
+		Trades.forEach(function(value, index){
+			console.log(value);
+		});
+	}
 }, 'BITSTAMP_SPOT_BTC_USD', time_start);
 api.GetQuotesCurrent(function(err, Quotes) {
-	console.log(Quotes);
+	if(!err){
+		Quotes  = JSON.parse(Quotes);
+		console.log(Quotes);
+		// Quotes.forEach(function(value, index){
+		// 	console.log(value);
+		// });
+	}
 }, 'BITSTAMP_SPOT_BTC_USD');
 api.GetQuotesLatest(function(err, Quotes) {
-	console.log(Quotes);
+	if(!err){
+		Quotes  = JSON.parse(Quotes);
+		Quotes.forEach(function(value, index){
+			console.log(value);
+		});
+	}
 });
 api.GetQuotesHistory(function(err, Quotes) {
-	console.log(Quotes);
+	if(!err){
+		Quotes  = JSON.parse(Quotes);
+		Quotes.forEach(function(value, index){
+			console.log(value);
+		});
+	}
 }, 'BITSTAMP_SPOT_BTC_USD', time_start);
 api.GetOrderbookCurrent(function(err, OrderBooks) {
-	console.log(OrderBooks);
+	if(!err){
+		OrderBooks  = JSON.parse(OrderBooks);
+		OrderBooks.forEach(function(value, index){
+			console.log(value);
+		});
+	}
 });
 api.GetOrderbookLatest(function(err, OrderBooks) {
-	console.log(OrderBooks);
+	if(!err){
+		OrderBooks  = JSON.parse(OrderBooks);
+		OrderBooks.forEach(function(value, index){
+			console.log(value);
+		});
+	}
 }, 'BITSTAMP_SPOT_BTC_USD');
 api.GetOrderbookHistory(function(err, OrderBooks) {
-	console.log(OrderBooks);
+	if(!err){
+		OrderBooks  = JSON.parse(OrderBooks);
+		OrderBooks.forEach(function(value, index){
+			console.log(value);
+		});
+	}
 }, 'BITSTAMP_SPOT_BTC_USD', time_start);
 api.GetTwitterLatest(function(err, Twitter) {
-	console.log(Twitter);
+	if(!err){
+		Twitter  = JSON.parse(Twitter);
+		Twitter.forEach(function(value, index){
+			console.log(value);
+		});
+	}
 });
 api.GetTwitterHistory(function(err, Twitter) {
 	Twitter  = JSON.parse(Twitter);

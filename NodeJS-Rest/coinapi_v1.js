@@ -24,10 +24,12 @@ method.PerformReq = function(url, callback){
 	    method: 'GET',
 	    headers: this.headers
 	}
-	request(options, function (error, response, body) {
+	request(options, function (error, response, data) {
 	    if (!error && response.statusCode == 200) {
-	        callback(body);
-	    }
+	        callback(false , data);
+	    }else{
+	    	callback(true , response.statusCode);
+		}
 	});
 }
 
@@ -86,13 +88,13 @@ method.GetOHLCVHistory = function(callback, symbol_id, period_id, time_start, ti
 		callback("symbol_id is required");
 	}if(period_id == null){
 		callback("period_id is required");
-	}if ($time_start == null){
+	}if (time_start == null){
         callback("time_start is required");
-    }if ($time_end == null && $limit != null){
+    }if (time_end == null && limit != null){
     	this.HttpClient.PerformReq('https://rest.coinapi.io/v1/ohlcv/' + symbol_id + '/history?period_id=' + period_id + '&time_start=' + time_start + '&limit='+limit, callback);
-    }else if ($limit == null && $time_end != null){
+    }else if (limit == null && time_end != null){
     	this.HttpClient.PerformReq('https://rest.coinapi.io/v1/ohlcv/' + symbol_id + '/history?period_id=' + period_id + '&time_start=' + time_start + '&time_end='+time_end, callback);
-	}else if ($limit == null && $time_end == null){
+	}else if (limit == null && time_end == null){
 		this.HttpClient.PerformReq('https://rest.coinapi.io/v1/ohlcv/' + symbol_id + '/history?period_id=' + period_id + '&time_start=' + time_start, callback);
     }else{
     	this.HttpClient.PerformReq('https://rest.coinapi.io/v1/ohlcv/' + symbol_id + '/history?period_id=' + period_id + '&time_start=' + time_start + '&time_end='+time_end+'&limit='+limit, callback);

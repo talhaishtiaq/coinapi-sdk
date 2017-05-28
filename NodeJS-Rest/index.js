@@ -4,7 +4,7 @@ var time_start = new Date();
 time_start.setDate(time_start.getDate()-1);
 
 
-var api = new CoinApi('APIKey');
+var api = new CoinApi("73034021-0EBC-493D-8A00-E0F138111F41");
 api.getExchanges(function(err, Exchanges) {
 	if(!err){
 		Exchanges  = JSON.parse(Exchanges);
